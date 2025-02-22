@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fafafa;
+        }
+
+        .form-container {
+            background: rgb(242, 243, 245);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #0a0a0a;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #0c0d0eef;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #7c2929;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #99b5d1;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0052a3;
+        }
+
+        #password-strength {
+            height: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+        }
+
+        .weak { background-color: #ff4d4d; width: 33%; }
+        .medium { background-color: #ffd700; width: 66%; }
+        .strong { background-color: #00cc00; width: 100%; }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>WELCOME TO VAULT OF CODES!!!</h2>
+        <h3>Please Fill the details below......</h3>
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" required>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" required>
+            </div>
+
+            <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob" required>
+            </div>
+
+            <div class="form-group">
+                <label>Gender</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="gender" value="male" required> Male</label>
+                    <label><input type="radio" name="gender" value="female"> Female</label>
+                    <label><input type="radio" name="gender" value="other"> Other</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="profilePic">Profile Picture</label>
+                <input type="file" id="profilePic" accept="image/*">
+            </div>
+
+            <div class="form-group">
+                <label style="display: flex;">
+                    <input type="checkbox" id="terms" required>
+                    I agree to the Terms and Conditions
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label>Password Strength</label>
+                <div id="password-strength"></div>
+            </div>
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+    <script>
+        const passwordInput = document.getElementById('password');
+        const strengthIndicator = document.getElementById('password-strength');
+        const form = document.getElementById('registrationForm');
+
+        passwordInput.addEventListener('input', function() {
+            const password = this.value;
+            let strength = 'weak';
+            
+            if (password.length >= 8 && /[A-Z]/.test(password) && /[0-9]/.test(password)) {
+                strength = 'strong';
+            } else if (password.length >= 6) {
+                strength = 'medium';
+            }
+
+            strengthIndicator.className = strength;
+        });
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const password = passwordInput.value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+            
+            alert('Registration successful!');
+            form.reset();
+            strengthIndicator.className = '';
+        });
+    </script>
+</body>
+</html>
