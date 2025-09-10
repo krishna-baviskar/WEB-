@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Previous head content remains the same -->
+    <style>
+        /* Previous styles remain, adding card-specific styles */
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Previous header and about sections remain -->
+    
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="projects-container">
+            <div class="project-card">
+                <h3>Project 1: Personal Blog</h3>
+                <p>A responsive blog website built with HTML and CSS featuring multiple articles.</p>
+                <a href="https://example.com/blog" target="_blank">View Project</a>
+            </div>
+
+            <div class="project-card">
+                <h3>Project 2: Task Manager</h3>
+                <p>A simple task management application with a clean interface.</p>
+                <a href="https://example.com/task-manager" target="_blank">View Project</a>
+            </div>
+        </div>
+    </section>
+    <!-- Previous contact section remains -->
+</body>
+</html>
