@@ -18,7 +18,7 @@ choose_insect_btns.forEach(btn => {
         const alt = img.getAttribute('alt')
         selected_insect = { src, alt }
         screens[1].classList.add('up')
-        setTimeout(createInsect, 1000)
+        setTimeout(createInsect, 1000) 
         startGame()
     })
 })
